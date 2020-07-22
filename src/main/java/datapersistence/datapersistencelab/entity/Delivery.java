@@ -25,6 +25,8 @@ public class Delivery {
     @Type(type="yes_no")
     private Character completed;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.REMOVE)
     List<Plant> list;
+
+    /* getters and setters */
 }
