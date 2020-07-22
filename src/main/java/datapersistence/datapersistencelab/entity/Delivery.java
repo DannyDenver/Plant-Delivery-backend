@@ -9,6 +9,11 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+@NamedQuery(
+        name = "Delivery.findByName",
+        query = "select d from Delivery d where d.name = :name"
+)
+
 @Entity
 public class Delivery {
     @Id
@@ -16,7 +21,7 @@ public class Delivery {
     private Long id;
 
     @Nationalized
-    private String recipientName;
+    private String name;
 
     @Column(name="address_full", length=500)
     private String address;
@@ -25,8 +30,17 @@ public class Delivery {
     @Type(type="yes_no")
     private Character completed;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.REMOVE)
-    List<Plant> list;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.ALL)
+    List<Plant> plants;
 
     /* getters and setters */
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public List<Plant> getPlants() {
+        return this.plants;
+    }
+
 }

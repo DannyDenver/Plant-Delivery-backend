@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="plant")
 public class Flower extends Plant {
 
     private String color;

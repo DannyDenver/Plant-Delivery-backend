@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="shrub")
-public class Shrub {
+public class Shrub extends Plant {
     private int height;
     private int width;
 
