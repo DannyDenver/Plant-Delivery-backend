@@ -20,41 +20,28 @@ public class Plant {
     private String name;
 
     @JsonView(Views.Public.class)
-    @Column(precision=12, scale=4)
+    @Column(precision = 12, scale = 4)
     private BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn(name="delivery_id")
+    //don't retrieve delivery if we don't need it
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
-    /* getters and setters */
-
-    public Long getId() {
-        return this.id;
+    // Convenience Constructor
+    public Plant(String name, double price) {
+        this.name = name;
+        this.price = BigDecimal.valueOf(price);
     }
 
-    public Delivery getDelivery() {
-        return this.delivery;
+    public Plant() {
     }
 
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Long getId() {
+        return id;
     }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public BigDecimal getPrice() {
-        return this.price;
-    }
-
 }

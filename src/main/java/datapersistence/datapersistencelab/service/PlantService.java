@@ -15,9 +15,8 @@ public class PlantService {
     PlantRepository plantRepository;
 
     public Plant getPlantByName(String name){
-        Shrub shrub = new Shrub();
-        shrub.setName("lil shrubby shrub");
-        return shrub;
+
+        return new Plant();
     }
 
     public Long savePlant(Plant plant) {
@@ -29,6 +28,6 @@ public class PlantService {
     }
 
     public List<Plant> findPlantsCheaperThan(BigDecimal price) {
-        return plantRepository.findAByPriceLessThan(price);
+        return plantRepository.findByPriceLessThan(price);
     }
 }

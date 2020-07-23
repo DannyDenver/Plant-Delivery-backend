@@ -10,6 +10,10 @@ public class Flower extends Plant {
 
     private String color;
 
+    public Flower(String name, Long price) {
+        super(name, price);
+    }
+
     public void setColor(String color) {
         this.color = color;
     }

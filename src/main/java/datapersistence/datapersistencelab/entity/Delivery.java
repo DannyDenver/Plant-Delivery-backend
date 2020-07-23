@@ -1,6 +1,5 @@
 package datapersistence.datapersistencelab.entity;
 
-
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 
@@ -28,10 +27,18 @@ public class Delivery {
 
     private LocalDateTime deliveryDate;
     @Type(type="yes_no")
-    private Character completed;
+    private boolean completed;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.ALL)
     List<Plant> plants;
+
+    public Delivery(String name, String address, LocalDateTime deliveryDate) {
+        this.name = name;
+        this.address = address;
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Delivery() { }
 
     /* getters and setters */
 
@@ -41,6 +48,11 @@ public class Delivery {
 
     public List<Plant> getPlants() {
         return this.plants;
+    }
+    public void setPlants(List<Plant> plants) { this.plants = plants; };
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
 }
